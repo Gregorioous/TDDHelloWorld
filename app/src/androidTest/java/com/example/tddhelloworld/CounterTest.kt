@@ -32,5 +32,12 @@ class CounterTest {
         activityScenarioRule.scenario.recreate()
         onView(withId(R.id.textView)).check(matches(withText("2")))
 
+        /* for (i in 2..Integer.MAX_VALUE){
+             onView(withText("increment")).perform(click())
+             onView(withId(R.id.textView)).check(matches(withText(i.toString())))
+         }
+         onView(withText("increment")).perform(click())
+         onView(withId(R.id.textView)).check(matches(withText("2147483647")))*/
+
     }
 }
