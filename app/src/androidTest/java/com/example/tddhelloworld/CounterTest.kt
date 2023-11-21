@@ -17,6 +17,7 @@ import org.junit.runner.RunWith
 class CounterTest {
     @get:Rule
     var activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
+
     @Test
     fun test() {
         onView(withId(R.id.textView)).check(matches(withText("0")))
@@ -27,6 +28,9 @@ class CounterTest {
         onView(withText("increment")).perform(click())
         onView(withId(R.id.textView)).check(matches(withText("2")))
 
+
+        activityScenarioRule.scenario.recreate()
+        onView(withId(R.id.textView)).check(matches(withText("2")))
 
     }
 }
