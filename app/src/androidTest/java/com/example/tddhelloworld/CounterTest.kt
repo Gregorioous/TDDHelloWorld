@@ -24,7 +24,7 @@ class CounterTest {
         onView(withId(R.id.button2)).perform(click())
         onView(withId(R.id.textView)).check(matches(withText("1")))
 
-        onView(withId(R.id.button2)).perform(click())
+        onView(withText("increment")).perform(click())
         onView(withId(R.id.textView)).check(matches(withText("2")))
 
 
