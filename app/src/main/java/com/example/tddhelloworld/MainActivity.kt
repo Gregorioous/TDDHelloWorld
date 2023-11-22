@@ -1,7 +1,7 @@
 package com.example.tddhelloworld
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tddhelloworld.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -11,14 +11,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-            viewBinding = ActivityMainBinding.inflate(layoutInflater)
-            setContentView(viewBinding.root)
+
+        val viewModel = (application as App).viewModel
+        viewBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
 
         viewBinding.textView.text = state.toString()
 
-        viewBinding.button2.setOnClickListener{
-            state++
-            viewBinding.textView.text = state.toString()
+        viewBinding.button2.setOnClickListener {
+            viewModel.increment()
+        }
+        viewModel.textLiveData.observe(this) {
+            viewBinding.textView.text = it
         }
 
     }
